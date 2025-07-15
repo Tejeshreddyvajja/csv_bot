@@ -1,0 +1,16 @@
+# Ignore Python cache and environment files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment files
+.env
+*.env
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Chroma vector store
+backend/chroma_store/
