@@ -15,4 +15,4 @@ crewai
 python-dotenv
 matplotlib
 psycopg2-binary
-
+python-multipart
