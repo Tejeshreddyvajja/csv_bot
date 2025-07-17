@@ -5,8 +5,22 @@ from routes import chatbot
 from routes import crew_chat
 from routes import api
 
+# Add database table creation on startup
+from db.database import Base, engine
+from models.survey import SurveyFeedback
 
 app = FastAPI(title="Survey Insights API")
+
+# Create tables on startup
+@app.on_event("startup")
+async def startup_event():
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ Database tables created successfully.")
+    except Exception as e:
+        print(f"❌ Error creating database tables: {e}")
+        # You might want to handle this more gracefully depending on your needs
+        raise e
 
 # ✅ Register all routes
 app.include_router(upload.router)
