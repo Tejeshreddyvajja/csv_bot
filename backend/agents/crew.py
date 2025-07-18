@@ -1,3 +1,9 @@
+# Import configuration first to suppress warnings
+import sys
+sys.path.append('..')
+from config import setup_environment
+setup_environment()
+
 import os
 from dotenv import load_dotenv
 from crewai import Agent, Task, Crew
@@ -122,7 +128,7 @@ def run_crew(user_question: str, chroma_path: str = "./chroma_store"):
         else:
             answer = str(result)
 
-        return {answer}
+        return answer
 
     except Exception as e:
-        return {"answer": f"CrewAI failed to generate a response: {e}"}
+        return f"CrewAI failed to generate a response: {e}"

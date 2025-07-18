@@ -1,3 +1,7 @@
+# Import configuration first to suppress warnings
+from config import setup_environment
+setup_environment()
+
 from routes import visualization
 from fastapi import FastAPI
 from routes import upload, visualization,sentiment
